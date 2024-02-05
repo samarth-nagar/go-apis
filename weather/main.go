@@ -1,4 +1,4 @@
-package weather
+package main
 
 import (
 	"encoding/json"
@@ -9,13 +9,15 @@ import (
 	"time"
 )
 
-func Get_weahter() {
+func main() {
 	var q string
 	fmt.Scanln(&q)
 	if len(os.Args) >= 2 {
 		q = os.Args[1]
 	}
-	res, err := http.Get("http://api.weatherapi.com/v1/forecast.json?key=7307ed7bcbe44aceab453650242001&q=" + q + "&days=1&aqi=no&alerts=no")
+	res, err := http.Get(
+		"http://api.weatherapi.com/v1/forecast.json?key=7307ed7bcbe44aceab453650242001&q=" + q + "&days=1&aqi=no&alerts=no",
+	)
 	if err != nil {
 		panic(err)
 	}
